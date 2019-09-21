@@ -1,5 +1,10 @@
+# How to run
+Requires java 12
+
 cd to src
 
-javac *
+javac -d ../out ./book/*.java
 
-java Main
+cd to out
+
+java book.Main
