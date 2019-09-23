@@ -18,7 +18,7 @@ public class GUI extends JFrame {
     public JLabel[] labels;
     public String[] labelStrings;
 
-    private JTextField[] textFields;
+    public JTextField[] textFields;
     private JPanel[] panels;
     public JButton[] buttons;
     public String[] buttonStings;
@@ -55,11 +55,11 @@ public class GUI extends JFrame {
         jContentPane = new JPanel(null);
 
         JPanel panel = new JPanel();
-        panel.setBounds(61, 11, 600, 140);
+        panel.setBounds(61, 11, 700, 140);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         JPanel buttonsPanel = new JPanel(new FlowLayout());
-        buttonsPanel.setBounds(61, 160, 600, 140);
+        buttonsPanel.setBounds(61, 160, 700, 140);
 
 
         jContentPane.add(panel);
@@ -87,9 +87,10 @@ public class GUI extends JFrame {
 
         for(int i=0; i < NUM_FIELDS; i++){
             labels[i] = new JLabel(labelStrings[i]);
-            panels[i] = new JPanel(new GridLayout());
+            panels[i] = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             panels[i].add(labels[i]);
-            textFields[i] = new JTextField(20);
+            textFields[i] = new JTextField(35);
+            //textFields[i].setSize(20,140);
             panels[i].add(textFields[i]);
             panel.add(panels[i]);
         }
@@ -111,10 +112,14 @@ public class GUI extends JFrame {
 
 
         //jContentPane.add(buttonsPanel);
-        this.setSize(700,300);
+        this.setSize(800,300);
         this.setContentPane(jContentPane);
+    }
 
-        //Main.init();
+    public void display(String message){
+        JOptionPane.showMessageDialog( GUI.this, String.format(
+                "%s", message ) );
+
     }
 
     // inner class for button event handling
@@ -123,15 +128,26 @@ public class GUI extends JFrame {
         // handle button event
         public void actionPerformed( ActionEvent event )
         {
-            JOptionPane.showMessageDialog( GUI.this, String.format(
-                    "You pressed: %s", event.getActionCommand() ) );
+           // JOptionPane.showMessageDialog( GUI.this, String.format(
+           //         "You pressed: %s", event.getActionCommand() ) );
+
+
+            if (event.getActionCommand().contains("Process")){
+                Main.process();
+            }else if(event.getActionCommand().contains("Exit")){
+                Main.exit();
+            } else if(event.getActionCommand().contains("Confirm")){
+                Main.confirm();
+            }else if(event.getActionCommand().contains("View")){
+                Main.view();
+            }else if(event.getActionCommand().contains("Finish")){
+                Main.finish();
+            } else if(event.getActionCommand().contains("New")){
+                Main.newOrder();
+            }
 
         } // end method actionPerformed
     } // end private inner class ButtonHandler
 
-    public void update(){
-        // refresh button and text labels
 
-        // disable/enable things
-    }
 }
