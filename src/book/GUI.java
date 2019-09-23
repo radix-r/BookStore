@@ -23,7 +23,7 @@ public class GUI extends JFrame {
     public JButton[] buttons;
     public String[] buttonStings;
     private JPanel jContentPane=null;
-    public final int ITEM_INDEX = 0;
+    public final int ITEM_COUNT_INDEX = 0;
     public final int BOOK_ID_INDEX = 1;
     public final int QUANTITY_INDEX = 2;
     public final int INFO_INDEX = 3;
@@ -68,7 +68,7 @@ public class GUI extends JFrame {
         labels = new JLabel[NUM_FIELDS];
         textFields = new JTextField[NUM_FIELDS];
         panels = new JPanel[NUM_FIELDS];
-        labelStrings[ITEM_INDEX] = "Enter number of items in this order: ";
+        labelStrings[ITEM_COUNT_INDEX] = "Enter number of items in this order: ";
         labelStrings[BOOK_ID_INDEX] = "Enter Book ID for Item #%d: ";
         labelStrings[QUANTITY_INDEX] = "Enter Quantity for Item #%d: ";
         labelStrings[INFO_INDEX] = "Item #%d info: ";
